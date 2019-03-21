@@ -188,3 +188,7 @@ fetch_raw_diff(url) # parse raw diff from GitHub API
 
 
 ---
+
+Publication:
+L. Ren, S. Zhou, C. Kästner , and A. Wąsowski. Identifying Redundancies in Fork-based Development. In Proceedings of the 27th IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER), 2019.
+https://www.cs.cmu.edu/~shuruiz/paper/saner19-RedundantDev.pdf
