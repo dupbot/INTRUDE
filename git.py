@@ -18,7 +18,7 @@ app.config['GITHUB_BASE_URL'] = 'https://api.github.com/'
 app.config['GITHUB_AUTH_URL'] = 'https://github.com/login/oauth/'
 
 
-LOCAL_DATA_PATH = '/DATA/luyao'
+LOCAL_DATA_PATH = '/DATA/shurui'
 
 api = GitHub(app)
 @api.access_token_getter
