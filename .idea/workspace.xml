@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="e0bd45b7-2e13-49c3-9e61-1683720b584d" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+=======
+    <list default="true" id="8f98ee37-3eb9-4b65-870f-7806848531d6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/get_pr_pair_description.py" afterDir="false" />
+>>>>>>> upstream/testd
       <change beforePath="$PROJECT_DIR$/git.py" beforeDir="false" afterPath="$PROJECT_DIR$/git.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -12,12 +17,27 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
+<<<<<<< HEAD
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/gen_select_subset_pr.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
               <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+=======
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/clf/first_nondup_feature_vector_ok_text_lsi_code_tfidf_ori_and_overlap_X.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2366" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fetch_raw_diff.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-453">
+>>>>>>> upstream/testd
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -26,6 +46,7 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/evaluation/random_sample_select_pr_result_example.txt">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
@@ -35,15 +56,127 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-1077">
               <caret line="202" column="18" lean-forward="true" selection-start-line="202" selection-start-column="18" selection-end-line="202" selection-end-column="18" />
+=======
+        <entry file="file://$PROJECT_DIR$/git.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="296">
+              <caret line="212" column="4" selection-start-line="212" selection-start-column="4" selection-end-line="212" selection-end-column="4" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/clf.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="648">
+              <caret line="105" column="18" selection-start-line="105" selection-start-column="18" selection-end-line="105" selection-end-column="18" />
+              <folding>
+                <element signature="e#856#1077#0" />
+                <element signature="e#1757#1819#0" />
+                <element signature="e#1894#2600#0" />
+                <element signature="e#1979#2062#0" />
+                <element signature="e#2154#2600#0" />
+                <element signature="e#2218#2500#0" />
+                <element signature="e#2239#2414#0" />
+                <element signature="e#2285#2414#0" />
+                <element signature="e#2653#3057#0" />
+                <element signature="e#2911#3057#0" />
+                <element signature="e#3245#3266#0" />
+                <element signature="e#3332#5440#0" />
+                <element signature="e#3642#3794#0" />
+                <element signature="e#3956#4215#0" />
+                <element signature="e#4043#4132#0" />
+                <element signature="e#4383#5301#0" />
+                <element signature="e#4606#4904#0" />
+                <element signature="e#4913#5301#1" />
+                <element signature="e#5516#11130#0" />
+                <element signature="e#5565#6575#0" />
+                <element signature="e#5670#5962#0" />
+                <element signature="e#5816#5865#0" />
+                <element signature="e#5915#5962#0" />
+                <element signature="e#6032#6319#0" />
+                <element signature="e#6723#7092#1" />
+                <element signature="e#7126#7468#0" />
+                <element signature="e#7161#7346#0" />
+                <element signature="e#7201#7346#0" />
+                <element signature="e#7268#7321#0" />
+                <element signature="e#7644#7658#0" />
+                <element signature="e#8256#8486#0" />
+                <element signature="e#8649#8663#0" />
+                <element signature="e#9200#10031#1" />
+                <element signature="e#10071#10478#0" />
+                <element signature="e#10509#11114#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/comp.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="366">
+              <caret line="386" column="31" lean-forward="true" selection-start-line="386" selection-start-column="22" selection-end-line="386" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/get_pr_pair_description.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="23" column="36" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="36" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/print_html.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="34" column="29" lean-forward="true" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/show_result_ml_feature.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="16" column="11" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="16" selection-end-column="11" />
+>>>>>>> upstream/testd
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
+<<<<<<< HEAD
   <component name="FindInProjectRecents">
     <findStrings>
       <find>gen_num</find>
+=======
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>commit</find>
+      <find>get_sim_wrap</find>
+      <find>get_pull</find>
+>>>>>>> upstream/testd
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -52,6 +185,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/gen_select_subset_pr.py" />
       </list>
     </option>
@@ -61,6 +195,19 @@
     <option name="y" value="-1052" />
     <option name="width" value="1885" />
     <option name="height" value="1040" />
+=======
+        <option value="$PROJECT_DIR$/getPRPairDescription.py" />
+        <option value="$PROJECT_DIR$/git.py" />
+        <option value="$PROJECT_DIR$/get_pr_pair_description.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-255" />
+    <option name="y" value="-1057" />
+    <option name="width" value="1920" />
+    <option name="height" value="1057" />
+>>>>>>> upstream/testd
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -79,11 +226,14 @@
               <item name="INTRUDE" type="462c0819:PsiDirectoryNode" />
               <item name="data" type="462c0819:PsiDirectoryNode" />
             </path>
+<<<<<<< HEAD
             <path>
               <item name="INTRUDE" type="b2602c69:ProjectViewProjectNode" />
               <item name="INTRUDE" type="462c0819:PsiDirectoryNode" />
               <item name="evaluation" type="462c0819:PsiDirectoryNode" />
             </path>
+=======
+>>>>>>> upstream/testd
           </expand>
           <select />
         </subPane>
@@ -93,7 +243,10 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+<<<<<<< HEAD
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+=======
+>>>>>>> upstream/testd
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="configurable.group.build" />
@@ -132,6 +285,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+<<<<<<< HEAD
       <changelist id="e0bd45b7-2e13-49c3-9e61-1683720b584d" name="Default Changelist" comment="" />
       <created>1553203494057</created>
       <option name="number" value="Default" />
@@ -139,10 +293,19 @@
       <updated>1553203494057</updated>
       <workItem from="1553203497472" duration="226000" />
       <workItem from="1553203739679" duration="1481000" />
+=======
+      <changelist id="8f98ee37-3eb9-4b65-870f-7806848531d6" name="Default Changelist" comment="" />
+      <created>1553465241155</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1553465241155</updated>
+      <workItem from="1553465244137" duration="2621000" />
+>>>>>>> upstream/testd
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="1707000" />
   </component>
   <component name="ToolWindowManager">
@@ -152,6 +315,23 @@
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2454739" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
+=======
+    <option name="totallyTimeSpent" value="2621000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-255" y="-1057" width="1920" height="1057" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24973376" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Python Console" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+>>>>>>> upstream/testd
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -159,6 +339,7 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
+<<<<<<< HEAD
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
@@ -170,11 +351,19 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="SciView" order="3" />
       <window_info anchor="right" id="Database" order="4" />
+=======
+      <window_info anchor="right" id="SciView" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+>>>>>>> upstream/testd
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+<<<<<<< HEAD
   <component name="editorHistoryManager">
     <entry file="file:///anaconda3/lib/python3.6/site-packages/sklearn/utils/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -199,6 +388,138 @@
           <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
+=======
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/get_pr_pair_description.py</url>
+          <line>8</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/data/clf/first_nondup_feature_vector_ok_text_lsi_code_tfidf_ori_and_overlap_X.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2366" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fetch_raw_diff.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-453">
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/util/localfile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="18" column="47" lean-forward="true" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/getPRPairDescription.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rq2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-259">
+          <caret line="68" column="17" selection-start-line="68" selection-start-column="17" selection-end-line="68" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/show_result_ml_feature.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="11" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="16" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clf.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="648">
+          <caret line="105" column="18" selection-start-line="105" selection-start-column="18" selection-end-line="105" selection-end-column="18" />
+          <folding>
+            <element signature="e#856#1077#0" />
+            <element signature="e#1757#1819#0" />
+            <element signature="e#1894#2600#0" />
+            <element signature="e#1979#2062#0" />
+            <element signature="e#2154#2600#0" />
+            <element signature="e#2218#2500#0" />
+            <element signature="e#2239#2414#0" />
+            <element signature="e#2285#2414#0" />
+            <element signature="e#2653#3057#0" />
+            <element signature="e#2911#3057#0" />
+            <element signature="e#3245#3266#0" />
+            <element signature="e#3332#5440#0" />
+            <element signature="e#3642#3794#0" />
+            <element signature="e#3956#4215#0" />
+            <element signature="e#4043#4132#0" />
+            <element signature="e#4383#5301#0" />
+            <element signature="e#4606#4904#0" />
+            <element signature="e#4913#5301#1" />
+            <element signature="e#5516#11130#0" />
+            <element signature="e#5565#6575#0" />
+            <element signature="e#5670#5962#0" />
+            <element signature="e#5816#5865#0" />
+            <element signature="e#5915#5962#0" />
+            <element signature="e#6032#6319#0" />
+            <element signature="e#6723#7092#1" />
+            <element signature="e#7126#7468#0" />
+            <element signature="e#7161#7346#0" />
+            <element signature="e#7201#7346#0" />
+            <element signature="e#7268#7321#0" />
+            <element signature="e#7644#7658#0" />
+            <element signature="e#8256#8486#0" />
+            <element signature="e#8649#8663#0" />
+            <element signature="e#9200#10031#1" />
+            <element signature="e#10071#10478#0" />
+            <element signature="e#10509#11114#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/msr_positive_pairs.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/print_html.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="34" column="29" lean-forward="true" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="366">
+          <caret line="386" column="31" lean-forward="true" selection-start-line="386" selection-start-column="22" selection-end-line="386" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/git.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="212" column="4" selection-start-line="212" selection-start-column="4" selection-end-line="212" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/get_pr_pair_description.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="36" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+>>>>>>> upstream/testd
           </folding>
         </state>
       </provider>
