@@ -15,9 +15,9 @@ with open(file) as f:
         data['dupPR'] = []
         data['dupPR'].append({
             'pr1.title': p1["title"],
-            'pr1.desc':p1["description"],
+            'pr1.desc':p1["description"]or '',
             'pr2.title': p2["title"],
-            'pr2.desc':p2["description"],
+            'pr2.desc':p2["description"]or '',
             'isDup': 'true'
         })
         with open('prPairs_title_desc.txt', 'w') as outfile:
