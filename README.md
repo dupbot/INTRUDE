@@ -193,3 +193,11 @@ fetch_raw_diff(url) # parse raw diff from GitHub API
 
 L. Ren, S. Zhou, C. Kästner , and A. Wąsowski. Identifying Redundancies in Fork-based Development. In Proceedings of the 27th IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER), 2019.
 https://www.cs.cmu.edu/~shuruiz/paper/saner19-RedundantDev.pdf
+
+---
+
+# 4 Models
+Model 0 - 1:40  dupPR : Merged PR
+Model 1 - 1:40  dupPR : Merged & Rejected PR
+Model 2 - 1:400 dupPR : Merge PR
+Model 3 - 1:40  dupPR : Merged PR (fix- version pattern detection, add commit msg) 
