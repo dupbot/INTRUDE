@@ -7,7 +7,15 @@ from util import localfile
 
 select_set = set()
 
-all_pr_flag = True
+all_pr_flag = False #True (both merge reject)
+
+msr_d = set()
+
+with open('data/msr_positive_pairs.txt') as f:
+    for t in f.readlines():
+        r, n1, n2 = t.split()
+        msr_d.add((r, n1, n2))
+
 
 def random_pairs():
     global select_set
@@ -40,7 +48,8 @@ def random_pairs():
             except:
                 continue
         
-
+        
+        
         ok_file = '/DATA/luyao/pr_data/%s/list_for_random_generate_c1.json' % repo
         if all_pr_flag:
             ok_file = ok_file.replace('_c1', '_all')
@@ -54,7 +63,7 @@ def random_pairs():
             nums = os.listdir('/DATA/luyao/pr_data/%s' % repo)
             print(repo + "has " + str(len(nums)) + " PRs in total on GitHub")
             
-            #todo: what does this function do?
+            # filter out config file and readme file
             def like_localize(p):
                 if 'confi' in p["title"].lower():
                     return True
@@ -75,24 +84,24 @@ def random_pairs():
             #todo: what is loop about?
             print("start to parse every PR...")
             
-#             for x in nums:
-#                 cnt += 1
+            for x in nums:
+                cnt += 1
                 
-#                 #todo: what is this 2 lines about?
-#                 if cnt % 100 == 0:
-#                     print(1.0 * cnt / tot_cnt)
+                #progess bar...
+                if cnt % 100 == 0:
+                    print(1.0 * cnt / tot_cnt)
 
-#                 if x.isdigit():
-#                     p = get_pull(repo, x)
-#                     # print('check', repo, x)
-#                     if (all_pr_flag or (p["merged_at"] is not None)) and (not check_large(p)) and \
-#                     (not too_small(p)) and (not like_localize(p)):
-#                         len_f = len(fetch_pr_info(p)) 
-#                         if (len_f > 0) and (len_f <= 10):
-#                             new_num.append(x)
-#                             print("length of new_nums " + str(len(new_num)))
+                if x.isdigit():
+                    p = get_pull(repo, x)
+                    # print('check', repo, x)
+                    if (all_pr_flag or (p["merged_at"] is not None)) and (not check_large(p)) and \
+                    (not too_small(p)) and (not like_localize(p)):
+                        len_f = len(fetch_pr_info(p)) 
+                        if (len_f > 0) and (len_f <= 10):
+                            new_num.append(x)
+                            print("length of new_nums " + str(len(new_num)))
             
-#             nums = new_num
+            nums = new_num
             print("length of nums: " + str(len(nums)))
             
             localfile.write_to_file(ok_file, nums)
@@ -110,34 +119,37 @@ def random_pairs():
                 continue
         
         ti = 0
-        while True:
+        while not find:
             ti += 1
-            if ti > 100:
-                break
+#             if ti > 100:
+#                 break
             if l > 0:
                 x = nums[random.randint(0, l - 1)]
                 y = nums[random.randint(0, l - 1)]
                 
+                if ((repo, x, y) in msr_d) or ((repo, y, x) in msr_d):
+                    continue
+        
                 if (repo, x, y) in select_set:
                     continue
-                
-                if (x != y) and (x.isdigit()) and (y.isdigit()):
-                    p1 = get_pull(repo, x)
-                    p2 = get_pull(repo, y)
-                    # print(repo, x, y)
-                    
-                    '''
-                    if not check_both_merged(p1, p2):
-                        continue
-                    '''
-                    if p1["user"]["id"] != p2["user"]["id"]:
-                        
-                        select_set.add((repo, x, y))
-                        select_set.add((repo, y, x))
-                                                
-                        find = True
-                        break
-    
+                try:
+                    if (x != y) and (x.isdigit()) and (y.isdigit()):
+                        p1 = get_pull(repo, x)
+                        p2 = get_pull(repo, y)
+                        # print(repo, x, y)
+
+                       
+                      
+                        if p1["user"]["id"] != p2["user"]["id"]:
+
+                            select_set.add((repo, x, y))
+                            select_set.add((repo, y, x))
+
+                            find = True
+                            break
+                except:
+                    print("PR 404")
+                    pass
     return [repo, x, y]
 
 
@@ -146,16 +158,16 @@ if __name__ == "__main__":
     ret = []
     
     # Model 0, Model 1 -- 1:40 (1174: 46960)
-    num = 10
+#     num = 50000
     
     # Model2 -- 1:400  (1174 training : 469600)
-    #num = 469600
-    
+    num = 469600
+    print (num)
     
     for t in range(num):
         pair = random_pairs()
-        print("count: " + str(t) + "pair: "+ str(pair))
-        with open('data/testSet_Model1.txt', 'a') as f:
+        print("count: " + str(t) + "/50000, "+ str(pair))
+        with open('data/testSet_Model2.txt', 'a') as f:
              print("\t".join(pair), file=f)
                 
 #         ret.append(pair)

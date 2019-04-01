@@ -34,9 +34,13 @@ data_folder = 'data/clf'
 dataset = [
     [data_folder + '/first_msr_pairs.txt', 1, 'train'],
     [data_folder + '/second_msr_pairs.txt', 1, 'test'],
-    [data_folder + '/first_nondup.txt', 0, 'train'],
+    [data_folder + '/first_nondup.txt', 0, 'train'], # modify this for testing different models
     [data_folder + '/second_nondup.txt', 0, 'test'],
 ]
+
+
+
+
 
 # model save name
 model_data_save_path_suffix = 'ok_text_%s_code_%s_%s_%s' % (text_sim_type, code_sim_type, extract_sim_type, feature_conf)
