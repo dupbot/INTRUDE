@@ -153,6 +153,7 @@ def random_pairs():
     return [repo, x, y]
 
 
+
 if __name__ == "__main__":
     # print(random_pairs())
     ret = []
@@ -165,10 +166,13 @@ if __name__ == "__main__":
     print (num)
     
     for t in range(num):
-        pair = random_pairs()
-        print("count: " + str(t) + "/50000, "+ str(pair))
-        with open('data/testSet_Model2.txt', 'a') as f:
-             print("\t".join(pair), file=f)
+        try:
+            pair = random_pairs()
+            print("count: " + str(t) + "/50000, "+ str(pair))
+            with open('data/testSet_Model2.txt', 'a') as f:
+                 print("\t".join(pair), file=f)
+        except:
+            time.sleep (60*30)
                 
 #         ret.append(pair)
 #     with open('data/testSet_Model1.txt', 'w') as f:

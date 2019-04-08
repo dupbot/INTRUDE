@@ -18,12 +18,15 @@ app.config['GITHUB_BASE_URL'] = 'https://api.github.com/'
 app.config['GITHUB_AUTH_URL'] = 'https://github.com/login/oauth/'
 
 
-LOCAL_DATA_PATH = '/DATA/shurui'
+LOCAL_DATA_PATH = '/DATA/luyao'
 
 api = GitHub(app)
 @api.access_token_getter
 def token_getter():
-    access_token = '9c34a60a61bfcb213b52d8b388f577f34c379987'
+    access_token = '7246c27f8923b2baa4fedd19d7bd64b4d0aa1f0f'
+     
+#         7246c27f8923b2baa4fedd19d7bd64b4d0aa1f0f
+# 9abfb768ed9daa5e59b782bc45f4d49d8b6ed371
     return access_token
 
 def text2list_precheck(func):
@@ -65,8 +68,10 @@ def check_too_big(pull):
         pull = get_pull(pull["base"]["repo"]["full_name"], pull["number"], True)
     
     if pull["changed_files"] > 50:
+        print ('more than 50 changed files')
         return True
     if (pull["additions"] >= 10000) or (pull["deletions"] >= 10000):
+        print ('more than 10000 Loc changes')
         return True
     return False
 
@@ -219,7 +224,7 @@ def get_pull(repo, num, renew=False):
             pass
 
     r = api.get('repos/%s/pulls/%s' % (repo, num))
-    time.sleep(1.0)
+    time.sleep(3.0)
     localfile.write_to_file(save_path, r)
     return r
 

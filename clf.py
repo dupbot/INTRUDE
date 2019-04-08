@@ -33,9 +33,11 @@ data_folder = 'data/clf'
 
 dataset = [
     [data_folder + '/first_msr_pairs.txt', 1, 'train'],
-    [data_folder + '/second_msr_pairs.txt', 1, 'test'],
-    [data_folder + '/first_nondup.txt', 0, 'train'], # modify this for testing different models
-    [data_folder + '/second_nondup.txt', 0, 'test'],
+    [data_folder + '/second_msr_pairs.txt', 1, 'test'], 
+    [data_folder + '/first_nondup.txt', 0, 'train'],
+    [data_folder + '/second_nondup.txt', 0, 'test'], # model 0
+#     [data_folder + '/testSet_Model1.txt', 0, 'test'], #model 1
+#     [data_folder + '/testSet_Model2.txt', 0, 'test'],  #model 2
 ]
 
 
@@ -53,8 +55,8 @@ if add_conf:
 
 part_params = None
 
-draw_pic = False # draw PR curve
-draw_roc = False # draw ROC curve
+draw_pic = True # draw PR curve
+draw_roc = True # draw ROC curve
 model_data_random_shuffle_flag = False
 model_data_renew_flag = False
 
@@ -120,7 +122,7 @@ def get_feature_vector(data, label, renew=False, out=None):
     X_path, y_path = out + '_X.json', out + '_y.json'
     
     if os.path.exists(X_path) and os.path.exists(y_path) and (not renew):
-        print('warning: feature vectore already exists!', out)
+        print('warning: feature vector already exists!', out)
         X = localfile.get_file(X_path)
         y = localfile.get_file(y_path)
         return X, y
@@ -129,19 +131,25 @@ def get_feature_vector(data, label, renew=False, out=None):
     
     # run with all PR's info model
     p = {}
+    pr_len = 0
     with open(data) as f:
         all_pr = f.readlines()
-    
+        pr_len = len(all_pr)
+    count = 0
+   
     for l in all_pr:
+        print (str(count/pr_len) + ' pr:' + l)
         r, n1, n2 = l.strip().split()
         
         if 'msr_pairs' not in data:
+            print ('check if there are too much texts in the PR description.. such as template..')
             if check_large(get_pull(r, n1)) or check_large(get_pull(r, n2)):
                 continue
 
         if r not in p:
             p[r] = []
         p[r].append((n1, n2, label))
+        count = count + 1
     
     print('all=', len(all_pr))
 
