@@ -12,7 +12,6 @@ repos = ['cocos2d/cocos2d-x', 'dotnet/corefx', 'django/django', 'angular/angular
          'joomla/joomla-cms', 'facebook/react', 'hashicorp/terraform', 'rails/rails', 'docker/docker',
          'elastic/elasticsearch', 'emberjs/ember.js', 'ansible/ansible']
 
-
 # get Duplicate PR pairs from MSR Dataset
 msr_d = set()
 with open('data/msr_positive_pairs.txt') as f:
