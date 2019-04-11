@@ -3,21 +3,21 @@ import sys
 from git import *
 from sklearn.utils import shuffle
 
-repos = ['hashicorp/terraform',
-        'django/django',
-        'docker/docker',
-        'cocos2d/cocos2d-x',
-        'dotnet/corefx',
-        'elastic/elasticsearch',
-        'JuliaLang/julia',
-        'emberjs/ember.js',
-        'facebook/react',
-        'rails/rails',
-        'angular/angular.js',
-        'joomla/joomla-cms',
-        'ceph/ceph',
-        'ansible/ansible']
+# training repos
+# repos = ['mozilla-b2g/gaia', 'twbs/bootstrap', 'scikit-learn/scikit-learn', 'rust-lang/rust', 'servo/servo', 'pydata/pandas', 'saltstack/salt', 'nodejs/node', 'symfony/symfony-docs', 'zendframework/zf2', 'symfony/symfony', 'kubernetes/kubernetes']
 
+# testing repos
+print("randomly pick a repo...")
+repos = ['cocos2d/cocos2d-x', 'dotnet/corefx', 'django/django', 'angular/angular.js', 'JuliaLang/julia', 'ceph/ceph',
+         'joomla/joomla-cms', 'facebook/react', 'hashicorp/terraform', 'rails/rails', 'docker/docker',
+         'elastic/elasticsearch', 'emberjs/ember.js', 'ansible/ansible']
+
+# get Duplicate PR pairs from MSR Dataset
+msr_d = set()
+with open('data/msr_positive_pairs.txt') as f:
+    for t in f.readlines():
+        r, n1, n2 = t.split()
+        msr_d.add((r, n1, n2))
 gen_num = 0
 
 def work(file):
