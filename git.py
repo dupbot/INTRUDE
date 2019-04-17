@@ -2,6 +2,7 @@ import time
 import os
 import re
 import requests
+import platform
 
 import fetch_raw_diff
 
@@ -17,13 +18,16 @@ app.config['GITHUB_CLIENT_SECRET'] = os.environ.get('GITHUB_CLIENT_SECRET')
 app.config['GITHUB_BASE_URL'] = 'https://api.github.com/'
 app.config['GITHUB_AUTH_URL'] = 'https://github.com/login/oauth/'
 
-
-LOCAL_DATA_PATH = '/DATA/luyao'
+if(platform.system() == 'Linux'):
+    LOCAL_DATA_PATH = '/DATA/luyao'
+else:
+    LOCAL_DATA_PATH = '/Users/shuruiz/Work/researchProjects'
+print('LOCAL_DATA_PATH:' + LOCAL_DATA_PATH)
 
 api = GitHub(app)
 @api.access_token_getter
 def token_getter():
-    access_token = '46f33f0744141e46c187ffcd3683568bee46018e'
+    access_token = '8a302f18ebd14b24e9c6b7430cbd7037ac212caa'
      
 #         7246c27f8923b2baa4fedd19d7bd64b4d0aa1f0f
 # 9abfb768ed9daa5e59b782bc45f4d49d8b6ed371
