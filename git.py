@@ -23,7 +23,7 @@ LOCAL_DATA_PATH = '/DATA/luyao'
 api = GitHub(app)
 @api.access_token_getter
 def token_getter():
-    access_token = '7246c27f8923b2baa4fedd19d7bd64b4d0aa1f0f'
+    access_token = '46f33f0744141e46c187ffcd3683568bee46018e'
      
 #         7246c27f8923b2baa4fedd19d7bd64b4d0aa1f0f
 # 9abfb768ed9daa5e59b782bc45f4d49d8b6ed371
