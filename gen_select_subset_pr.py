@@ -15,15 +15,17 @@ all_repos = ['mozilla-b2g/gaia', 'twbs/bootstrap', 'scikit-learn/scikit-learn', 
 
 if (repo_type == 'training'):
     print("randomly pick a repo...")
-    repos = ['mozilla-b2g/gaia', 'twbs/bootstrap', 'scikit-learn/scikit-learn', 'rust-lang/rust', 'servo/servo',
-             'pydata/pandas', 'saltstack/salt', 'nodejs/node', 'symfony/symfony-docs', 'zendframework/zf2',
-             'symfony/symfony', 'kubernetes/kubernetes']
+    repos = ['mozilla-b2g/gaia']
+#     repos = ['mozilla-b2g/gaia', 'twbs/bootstrap', 'scikit-learn/scikit-learn', 'rust-lang/rust', 'servo/servo',
+#              'pydata/pandas', 'saltstack/salt', 'nodejs/node', 'symfony/symfony-docs', 'zendframework/zf2',
+#              'symfony/symfony', 'kubernetes/kubernetes']
 else:  # testing repos
     print("randomly pick a repo...")
-    repos = ['cocos2d/cocos2d-x', 'dotnet/corefx', 'django/django', 'angular/angular.js', 'JuliaLang/julia',
-             'ceph/ceph',
-             'joomla/joomla-cms', 'facebook/react', 'hashicorp/terraform', 'rails/rails', 'docker/docker',
-             'elastic/elasticsearch', 'emberjs/ember.js', 'ansible/ansible']
+    repos = ['cocos2d/cocos2d-x']
+#     repos = ['cocos2d/cocos2d-x', 'dotnet/corefx', 'django/django', 'angular/angular.js', 'JuliaLang/julia',
+#              'ceph/ceph',
+#              'joomla/joomla-cms', 'facebook/react', 'hashicorp/terraform', 'rails/rails', 'docker/docker',
+#              'elastic/elasticsearch', 'emberjs/ember.js', 'ansible/ansible']
 
 # get Duplicate PR pairs from MSR Dataset
 msr_pr_pair = set()
@@ -31,7 +33,7 @@ msr_repo_prList_map = {k: [] for k in all_repos}
 
 with open('data/msr_positive_pairs.txt') as f:
     for t in f.readlines():
-        print(t)
+#         print(t)
         r, n1, n2 = t.split()
         if r in all_repos:
             msr_pr_pair.add((r, n1, n2))
@@ -62,14 +64,16 @@ def work(file):
                 r, n = t.strip().split()
                 has.add((r, n))
 
+    
     for repo in repos:
         print('Generating PRs from', repo)
 
         for msr_pr in msr_repo_prList_map[repo]:
             if getConsecutivePRPairs_flag:
                 result = getConsecutiveNonDupPRPairs(repo, msr_pr)
-                for r in result:
-                    print(r)
+                print(result)
+#                 for r in result:
+#                     print(r)
             else:
                 pulls = get_repo_info(repo, 'pull')
 
@@ -97,4 +101,6 @@ if __name__ == "__main__":
         file = sys.argv[1].strip()
         gen_num = int(sys.argv[2].strip())
 
+    print(file)
+    print(gen_num)
     work(file)
