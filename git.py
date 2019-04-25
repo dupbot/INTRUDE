@@ -27,10 +27,8 @@ print('LOCAL_DATA_PATH:' + LOCAL_DATA_PATH)
 api = GitHub(app)
 @api.access_token_getter
 def token_getter():
-    access_token = '8a302f18ebd14b24e9c6b7430cbd7037ac212caa'
+    access_token = 'c152dd684bc4e65d07ba80dfa321dbcd0e7823a0'
      
-#         7246c27f8923b2baa4fedd19d7bd64b4d0aa1f0f
-# 9abfb768ed9daa5e59b782bc45f4d49d8b6ed371
     return access_token
 
 def text2list_precheck(func):

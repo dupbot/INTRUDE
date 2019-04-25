@@ -3,6 +3,7 @@ import re
 import sys
 import random
 import copy
+#import imbalanced-learn
 
 from sklearn.ensemble import *
 from sklearn.metrics import *
@@ -15,6 +16,9 @@ from sklearn import linear_model
 from sklearn.feature_selection import SelectKBest, f_regression
 from sklearn.pipeline import make_pipeline
 from sklearn.model_selection import train_test_split
+from imblearn.over_sampling import SMOTE
+from imblearn.ensemble import RUSBoostClassifier
+from sklearn.model_selection import cross_val_score
 
 import matplotlib.pyplot as plt
 from numpy import array
@@ -34,10 +38,14 @@ data_folder = 'data/clf'
 dataset = [
     [data_folder + '/first_msr_pairs.txt', 1, 'train'],
     [data_folder + '/second_msr_pairs.txt', 1, 'test'], 
-    [data_folder + '/first_nondup.txt', 0, 'train'],
-    [data_folder + '/second_nondup.txt', 0, 'test'], # model 0
+#     [data_folder + '/first_nondup.txt', 0, 'train'], 
+#     [data_folder + '/second_nondup.txt', 0, 'test'], # model 0
 #     [data_folder + '/testSet_Model1.txt', 0, 'test'], #model 1
 #     [data_folder + '/testSet_Model2.txt', 0, 'test'],  #model 2
+    
+    #### consequtive non dup pr pairs
+    [data_folder + '/consecutive_NonDupPR_pairs_training.txt', 0, 'train'],
+    [data_folder + '/consecutive_NonDupPR_pairs_testing.txt', 0, 'test'],
 ]
 
 
@@ -262,6 +270,10 @@ def classify(model_type=default_model):
     
     print('--------------------------')
     print('Size of Dataset: training_set', len(X_train), 'testing_set', len(X_test), 'feature_length=', len(X_train[0]))
+    #X_train_aug = X_train
+    #y_train_aug = y_train
+    #X_train_aug += [t[0] for t in s if t[1]==1] * 5
+    #y_train_aug += [1 for t in s if t[1]==1] * 5
     
     # model choice
 
@@ -277,31 +289,68 @@ def classify(model_type=default_model):
     elif model_type == 'SGDClassifier':
         clf = linear_model.SGDClassifier(tol=0.01)
     elif model_type == 'boost':
-        clf = AdaBoostClassifier(n_estimators=200, learning_rate=0.1).fit(X_train, y_train)
+#         clf = AdaBoostClassifier(n_estimators=200, learning_rate=0.1).fit(X_train, y_train)
         # clf = AdaBoostClassifier(base_estimator=DecisionTreeClassifier(max_depth=5), n_estimators=100, learning_rate=0.01).fit(X_train, y_train)
+        #sm = SMOTE(random_state=42, k_neighbors=15, kind = 'svm')
+        #X_res, y_res = sm.fit_resample(X_train, y_train)
+        for n_est in [ 400]:
+            for m_d in [ 3]:
+                clf = GradientBoostingClassifier(n_estimators=n_est, learning_rate=0.01, max_depth=m_d, random_state=0)
+                #clf = RUSBoostClassifier(random_state=0, n_estimators=250, learning_rate=0.01)
+                s = sorted(zip(X_train, y_train), reverse=True)
+               
+                scores = cross_val_score(clf, X_train, y_train, cv=5)
+                print("n_estimators:", n_est, "max_depth:", m_d)
+                print(scores.mean())
+        
+    
+                clf = clf.fit(X_train, y_train)
+                
+                 # Predict
+                acc = clf.score(X_test, y_test)
+                print('Mean Accuracy:', acc)
+    
+                y_score = clf.decision_function(X_test)
+                average_precision = average_precision_score(y_test, y_score)
+                print('Average precision score: {0:0.4f}'.format(average_precision))
+    
+                f1_s = f1_score(y_test, clf.predict(X_test))
+                print('F1 score: {0:0.4f}'.format(f1_s))
+    
+                print(acc, average_precision, f1_s, sep='\t')
+   
+                if draw_pic:
+        # draw the PR-curve
+                    precision, recall, _ = precision_recall_curve(y_test, y_score)
 
-    # clf = GradientBoostingClassifier(n_estimators=200, learning_rate=0.3, max_depth=25, random_state=0)
+                    plt.step(recall, precision, color='b', alpha=0.1, where='post')
+                    plt.fill_between(recall, precision, step='post', alpha=0.1, color='b')
+
+                    plt.xlabel('Recall')
+                    plt.ylabel('Precision')
+                    plt.ylim([0.0, 1.05])
+                    plt.xlim([0.0, 1.0])
+                    plt.title('Precision-Recall curve')
     
-    
-    clf = clf.fit(X_train, y_train)
-    
-    # model result
-    # print('coef in model = ', clf.coef_)
-    # print(clf.intercept_)
-    # print(clf.loss_function_)
-    
-    # Predict
-    acc = clf.score(X_test, y_test)
-    print('Mean Accuracy:', acc)
-    
-    y_score = clf.decision_function(X_test)
-    average_precision = average_precision_score(y_test, y_score)
-    print('Average precision score: {0:0.4f}'.format(average_precision))
-    
-    f1_s = f1_score(y_test, clf.predict(X_test))
-    print('F1 score: {0:0.4f}'.format(f1_s))
-    
-    print(acc, average_precision, f1_s, sep='\t')
+                if draw_roc:
+        # Compute ROC curve and ROC area for each class
+                    fpr, tpr, _ = roc_curve(y_test, y_score)
+                    roc_auc = auc(fpr, tpr)
+
+                    plt.figure()
+        
+                    plt.plot(fpr, tpr, color='darkorange',
+                        lw=2, label='ROC curve (area = %0.5f)' % roc_auc)
+
+                    plt.plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--')
+                    plt.xlim([0.0, 1.0])
+                    plt.ylim([0.0, 1.05])
+                    plt.xlabel('False Positive Rate')
+                    plt.ylabel('True Positive Rate')
+                    plt.title('Receiver operating characteristic example')
+                    plt.legend(loc="lower right")
+                    plt.show()
+
     '''
     threshold = 0.5
     y_pred_proba = clf.predict_proba(X_test)
@@ -333,38 +382,24 @@ def classify(model_type=default_model):
     '''
         
     
-    if draw_pic:
-        # draw the PR-curve
-        precision, recall, _ = precision_recall_curve(y_test, y_score)
-
-        plt.step(recall, precision, color='b', alpha=0.1, where='post')
-        plt.fill_between(recall, precision, step='post', alpha=0.1, color='b')
-
-        plt.xlabel('Recall')
-        plt.ylabel('Precision')
-        plt.ylim([0.0, 1.05])
-        plt.xlim([0.0, 1.0])
-        plt.title('Precision-Recall curve')
+    # model result
+    # print('coef in model = ', clf.coef_)
+    # print(clf.intercept_)
+    # print(clf.loss_function_)
     
-    if draw_roc:
-        # Compute ROC curve and ROC area for each class
-        fpr, tpr, _ = roc_curve(y_test, y_score)
-        roc_auc = auc(fpr, tpr)
+    # retrain
+    #y_train_score = clf.decision_function(X_train)
+    #s = sorted(zip(y_train_score, X_train, y_train), reverse=True)
+    #X_train_new = [t[1] for t in s[:int(len(s)/10)]]
+    #y_train_new = [t[2] for t in s[:int(len(s)/10)]]
+    #X_train_new += [t[1] for t in s if t[2]==1]
+    #y_train_new += [1 for t in s if t[2]==1]
 
-        plt.figure()
-        
-        plt.plot(fpr, tpr, color='darkorange',
-                 lw=2, label='ROC curve (area = %0.5f)' % roc_auc)
+    #clf = clf.fit(X_train_new, y_train_new)
 
-        plt.plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--')
-        plt.xlim([0.0, 1.0])
-        plt.ylim([0.0, 1.05])
-        plt.xlabel('False Positive Rate')
-        plt.ylabel('True Positive Rate')
-        plt.title('Receiver operating characteristic example')
-        plt.legend(loc="lower right")
-        plt.show()
 
+    
+   
     return clf
 
 if __name__ == "__main__":

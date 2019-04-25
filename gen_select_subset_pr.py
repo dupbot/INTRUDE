@@ -5,8 +5,8 @@ from sklearn.utils import shuffle
 
 getConsecutivePRPairs_flag = True
 
-# repo_type = 'training'  # 'testing'
-repo_type = 'testing'
+repo_type = 'training'  # 'testing'
+# repo_type = 'testing'
 all_repos = ['mozilla-b2g/gaia', 'twbs/bootstrap', 'scikit-learn/scikit-learn', 'rust-lang/rust', 'servo/servo',
              'pydata/pandas', 'saltstack/salt', 'nodejs/node', 'symfony/symfony-docs', 'zendframework/zf2',
              'symfony/symfony', 'kubernetes/kubernetes', 'cocos2d/cocos2d-x', 'dotnet/corefx', 'django/django',
@@ -49,7 +49,8 @@ def getConsecutiveNonDupPRPairs(repo, prID):
     pull_list = get_repo_info(repo, 'pull')
     pull_list = list(filter(lambda x: (int(x['number']) < int(prID)), pull_list))
     pull_list = sorted(pull_list, key=lambda x: int(x['number']), reverse=True)
-    pull_list = pull_list[:10]
+#     pull_list = pull_list[:10]
+    pull_list = pull_list[10:50]
     pull_list = [x['number'] for x in pull_list]
     pr_pair_list = []
     for old_pr in pull_list:
@@ -75,12 +76,16 @@ def work(file):
 
     for repo in repos:
         print('Generating PRs from', repo)
-
+        total = len(msr_repo_prList_map[repo])
+        print(str(total) + 'prs in total')
+        count = 1;
         for msr_pr in msr_repo_prList_map[repo]:
             print('current pr in MSR:' + msr_pr)
             if getConsecutivePRPairs_flag:
                 result = getConsecutiveNonDupPRPairs(repo, msr_pr)
-                print(result)
+#                 print(result)
+                count += 1
+                print(str(count)+'/'+str(total))
                 for pair in result:
                     with open(file, 'a') as f:
                         print("\t".join(pair), file=f)
@@ -111,5 +116,5 @@ if __name__ == "__main__":
         gen_num = int(sys.argv[2].strip())
 
     print(file)
-    print(gen_num)
+    print(repo_type)
     work(file)
