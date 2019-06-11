@@ -1,6 +1,6 @@
 import clf
 
-file = 'evaluation/random_sample_select_pr_result_0421_new.txt'
+file = 'evaluation/random_sample_select_pr_result_0424.txt'
 out = open(file + '.out', 'w')
 
 c = clf.classify()

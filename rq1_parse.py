@@ -1,8 +1,8 @@
-outfile = 'evaluation/0423_new_precision_recall.txt'
+outfile = 'evaluation/0424_avoidNA_precision_recall.txt'
 with open(outfile, 'w') as outf:
     pass
 
-for thres in range(1346, 8336, 10):
+for thres in range(513, 8720, 20):
     threshold = 1.0 * thres / 10000
 
     precision = {}
@@ -12,9 +12,9 @@ for thres in range(1346, 8336, 10):
     
     overall_pre = [0, 0]
     overall_rec = [0, 0]
-
-#     with open('evaluation/random_sample_select_pr_result.txt') as f:
-    with open('evaluation/0423-label.txt') as f:
+    overall_rec_rq1 = [0, 0]
+    with open('evaluation/rust0424_less.txt') as f:
+#     with open('evaluation/0423-label.txt') as f:
         for t in f.readlines():
             if ',' in t:
                 r, n1, n2, v, status = t.strip().split(',')
@@ -29,16 +29,19 @@ for thres in range(1346, 8336, 10):
             if r not in precision:
                 precision[r] = 'N/A'
                 precision_num[r] = [0, 0]
-            
+          
+            if 'Y' in status:
+                overall_rec_rq1[1] += 1
             if v >= threshold:
                 overall_pre[1] += 1
                 precision_num[r][1] += 1
                 if 'Y' in status:
                     overall_pre[0] += 1
+                    overall_rec_rq1[0]+= 1
                     precision_num[r][0] += 1
                 precision[r] = 1.0 * precision_num[r][0] / precision_num[r][1]
                 
-    with open('evaluation/msr_second_part_result_0421_new.txt') as f:
+    with open('evaluation/msr_second_part_result_0424.txt') as f:
         for t in f.readlines():
             r, n1, n2, v = t.strip().split()
             v = float(v)
@@ -70,11 +73,11 @@ for thres in range(1346, 8336, 10):
     print(threshold, safe_div(sum(pre), len(pre)), safe_div(sum(rec), len(rec)), sep='\t')
     '''
 
-    if threshold < 0.12:
+    if threshold < 0.034:
         overall_pre = [0, 0]
     precision_tmp = safe_div(overall_pre[0], overall_pre[1])
-    recall_tmp = safe_div(overall_rec[0], overall_rec[1])
-    print(threshold, precision_tmp, recall_tmp, sep='\t')
+    recall_tmp = safe_div(overall_rec_rq1[0], overall_rec_rq1[1])
+    print(threshold, precision_tmp, recall_tmp, overall_pre[1], sep='\t')
 #     with open(outfile, 'a') as outf:
 #           print(threshold, safe_div(overall_pre[0], overall_pre[1]), safe_div(overall_rec[0], overall_rec[1]),sep='\t',file=outfile)
     
