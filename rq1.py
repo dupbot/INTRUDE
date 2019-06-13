@@ -27,7 +27,7 @@ with open('evaluation/random_sample_select_pr_result_labeled_by_authors.txt') as
 #         if (cnt <= 2114):
 #             continue
 
-        n2, proba = detect.detect_one(r, n1)
+        n2, proba = detect.detect_one(r, n1)        #returns the most similar pair (n1, n2) and probability that they are dups
         with open(outfile, 'a') as outf:
             print(r, n1, n2, proba, sep='\t', file=outf)
 
