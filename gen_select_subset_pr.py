@@ -43,19 +43,19 @@ with open('data/msr_positive_pairs.txt') as f:
 
 gen_num = 0
 
-
+#we need to change this to generate PRs only in a certain timeframe
 def getConsecutiveNonDupPRPairs(repo, prID):
-    # get all pr
-    pull_list = get_repo_info(repo, 'pull')
-    pull_list = list(filter(lambda x: (int(x['number']) < int(prID)), pull_list))
-    pull_list = sorted(pull_list, key=lambda x: int(x['number']), reverse=True)
-#     pull_list = pull_list[:10]
-    pull_list = pull_list[10:50]
+    # get all PRs
+    pull_list = get_repo_info(repo, 'pull')     #find all pulls; git.py. First closed, then open.
+    pull_list = list(filter(lambda x: (int(x['number']) < int(prID)), pull_list))   #find earlier PRs (number lower than current PR ID)
+    pull_list = sorted(pull_list, key=lambda x: int(x['number']), reverse=True)     #previous lines do not return sorted PRs
+    pull_list = pull_list[10:50]    #we might remove this constraint--here we're just looking at the closest 40 (in time)
     pull_list = [x['number'] for x in pull_list]
     pr_pair_list = []
+    #below, this will not be helpful for our current purposes--no msr_pr...
     for old_pr in pull_list:
-        old_pr = str(old_pr)
-        if (repo, prID, old_pr) not in msr_pr_pair and (repo, old_pr, prID) not in msr_pr_pair:
+     old_pr = str(old_pr)
+       if (repo, prID, old_pr) not in msr_pr_pair and (repo, old_pr, prID) not in msr_pr_pair:
             pr_pair_list.append((repo, prID, old_pr))
         else:
             print(repo + ',' + prID + ',' + old_pr + ' is duplicate')
